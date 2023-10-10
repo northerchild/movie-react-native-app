@@ -5,6 +5,7 @@ import Carousel from 'react-native-snap-carousel'
 import HorizontalSlider from '../components/HorizontalSlider'
 import { useMovies } from '../hooks/useMovies'
 
+
 const windowWidth = Dimensions.get('window').width
 
 const HomeScreen = () => {
@@ -22,30 +23,32 @@ const HomeScreen = () => {
   }
   
   return (
-    <ScrollView>
 
-            
-            <View>
+        <ScrollView>
+
                 
-                {/* Carosel Principal */}
-                <View style={{ height: 440 }}>
-                    <Carousel 
-                        data={ nowPlaying }
-                        renderItem={ ({ item }: any) => <MoviePoster movie={ item } /> }
-                        sliderWidth={ windowWidth }
-                        itemWidth={ 300 }
-                        inactiveSlideOpacity={0.9}
-                    />
+                <View>
+                    
+                    {/* Carosel Principal */}
+                    <View style={{ height: 440 }}>
+                        <Carousel 
+                            data={ nowPlaying }
+                            renderItem={ ({ item }: any) => <MoviePoster movie={ item } /> }
+                            sliderWidth={ windowWidth }
+                            itemWidth={ 300 }
+                            inactiveSlideOpacity={0.9}
+                        />
+                    </View>
+
+                    {/* Películas populares */}
+                    <HorizontalSlider title="Popular" movies={ popular } />
+                    <HorizontalSlider title="Top Rated" movies={ topRated } />
+                    <HorizontalSlider title="Upcoming" movies={ upcoming } />
+
+
                 </View>
+            </ScrollView>
 
-                {/* Películas populares */}
-                <HorizontalSlider title="Popular" movies={ popular } />
-                <HorizontalSlider title="Top Rated" movies={ topRated } />
-                <HorizontalSlider title="Upcoming" movies={ upcoming } />
-
-
-            </View>
-        </ScrollView>
   )
 }
 
